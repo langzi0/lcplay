@@ -1,8 +1,6 @@
 CodePad From LC
 ========
-Actively using dev branch, not main
 This was forked from https://github.com/yh1213/leetcode-3.
-
 
 
 This is a definitely a draft project to remember my progress in leetcode.  Appreciate the original owner who created the problem set. 
@@ -24,7 +22,7 @@ Debug Common.Main
  3. Inside this class, add your class.  
    CodePadJava/src/Common/Main.java      Main.addingAllNewClasses()
  
- 4. It will call your class. 
+ 4. It will call your class which is based on highest priority latest test case.
 
 Adding JavaLangTestResference.txt
 

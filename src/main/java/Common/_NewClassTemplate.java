@@ -1,0 +1,23 @@
+package Common;
+
+import java.util.*;
+/**
+ * @author 
+ * @since 10/28/15
+ * This is the template for adding any new class
+ */
+
+public class _NewClassTemplate extends InvokableBase {
+  // Add this class to Common/Main.java
+  @Override
+  public Priority getRunPriority() {
+    return new Priority(160101, 0, Category.LeetCode);
+  }
+
+  @Override
+  public void run() {
+    //Call your test in Common/Main.java
+    List a; // to keep java.util.*;
+  }
+
+}
