@@ -50,6 +50,7 @@ public class Main {
         if (aClass.getSuperclass() == InvokableBase.class) {
           InvokableBase obj = (InvokableBase) aClass.getDeclaredConstructor().newInstance();
           if (obj.getRunPriority().getDaySeq() >= topPriority) {
+            System.out.println("running " + a.getName() + " and priority is " + obj.getRunPriority().getDaySeq() );
             obj.run();
           }
         }
