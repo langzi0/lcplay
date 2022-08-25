@@ -24,8 +24,13 @@ Debug Common.Main
  
  4. It will call your class which is based on highest priority latest test case.
 
+
 Adding JavaLangTestResference.txt
 
-
+Tips for using two github accounts 
+use gitlangzi0 to associate github host with you personal github public key;  You maintain two ssh config host file
+when switching, cp that ssh key file you want your github.com to be assoicated with into the main ~/.ssh/config 
+also cp ~/.gitconfigbians  into your <project folder>/.git/config to have correct user name for this project always in commit
+&& cp ~/.ssh/config.langzi0 ~/.ssh/config'
 ./		../		.name		compiler.xml	misc.xml	modules.xml	vcs.xml		workspace.xml
 
