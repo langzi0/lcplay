@@ -58,7 +58,7 @@ public class Main {
         }
       }
       catch (Throwable th) {
-        System.out.println("Caught error when finding and run the class! what? ");
+        System.out.println("*** Caught error when finding and run the class! ");
         th.printStackTrace();
       }
 
