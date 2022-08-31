@@ -20,10 +20,12 @@ public class Main {
   static ArrayList<InvokableBase> listPrograms = new ArrayList<>();
 
   static public void main(String[] args) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-    List<String> packages = Arrays.asList("CodePad", "Lang", "Question", "Unsorted");//"LanguageTip",
-    runTopPriorityFromPackages(packages);
-    // runTopPriority();
-    // runCategory(InvokableBase.Category.Language);
+    List<String> packages = Arrays.asList("CodePad", "Lang", "Question", "LanguageTip","Unsorted");
+    try {
+      runTopPriorityFromPackages(packages);
+    } catch (Throwable th){
+      System.out.println("Quit because:" + th.getMessage());
+    }
   }
 
   static void runTopPriorityFromPackages(List<String> packagesStartNames) {
@@ -54,9 +56,12 @@ public class Main {
             obj.run();
           }
         }
-      } catch (Throwable th) {
+      }
+      catch (Throwable th) {
+        System.out.println("Caught error when finding and run the class! what? ");
         th.printStackTrace();
       }
+
     });
 
   }
@@ -107,7 +112,8 @@ public class Main {
               classes.add(Class.forName(name));
             }
           }
-        } catch (Exception ex) {
+        } catch (Throwable ex) {
+          System.out.print(ex.getStackTrace());
           // Silence is gold
         }
       }

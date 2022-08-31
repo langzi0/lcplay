@@ -1,4 +1,4 @@
-package languageTip;
+package LanguageTip;
 
 import java.io.BufferedReader;
 import java.io.Console;

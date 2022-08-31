@@ -4,7 +4,9 @@ import Common.Category;
 import Common.InvokableBase;
 import Common.Priority;
 import Common.Util;
+import static java.lang.System.out;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -18,7 +20,7 @@ public class JavaLang extends InvokableBase {
 
   @Override
   public Priority getRunPriority() {
-    return new Priority(200916, 03, Category.notClassified);
+    return new Priority(220825, 01, Category.notClassified);
   }
 
   public void run() {
@@ -27,14 +29,26 @@ public class JavaLang extends InvokableBase {
     method_parameter_modifiation();
     run_lamdaAsStream();
     run_interface_anonymous_class();
+    test_integer_max_min();
+
+  }
+
+  private void test_integer_max_min() {
+    out.println("test_integer_max_min:" + Integer.MAX_VALUE );
+    // 4byte 32bit: 2 << 30 is -2147483648    2 <<29 = 1073741824  Integer.MAX_VALUE 2147483647 = 2^31 -1 = 2147483647
+    out.println("test_integer_max_min:" + ( 2 << 30)  + " 2<< 29="+ ( 2 << 29)  + " " + (Integer.MAX_VALUE - (2<<30)) );
+
   }
 
 
-// 111111111111111111111111111111111111111111111111111111
   // Anonymous class
   class ProgrammerInterview  {
+
+    // java.lang is special namespace
+    // System is a class, out is a static variable that is lower case.
+    // public static final PrintStream out
     public void read() {
-      System.out.println("Programmer Interview!");
+      out.println("Programmer Interview!");
     }
   }
 
@@ -43,7 +57,7 @@ public class JavaLang extends InvokableBase {
 
     ProgrammerInterview pInstanceOfInnerclass = new ProgrammerInterview() {
       public void read() {
-        System.out.println("anonymous ProgrammerInterview");
+        out.println("anonymous ProgrammerInterview");
       }
     };
     ProgrammerInterview pInstanceOfProgrammerInterview = new ProgrammerInterview();
@@ -80,7 +94,8 @@ public class JavaLang extends InvokableBase {
 
     Handler<Integer> handler = x -> {
       String i = "0";
-      System.out.print(i);
+
+      out.print(i);
     };
 
 // pass in the variable into the anonymous class.
@@ -142,13 +157,13 @@ public class JavaLang extends InvokableBase {
     new Thread(new Runnable() {
       @Override
       public void run() {
-        System.out.println("Before Java8, too much code for too little to do");
+        out.println("Before Java8, too much code for too little to do");
       }
     }).start();
 
     //Java 8 way:
     new Thread(
-        () -> System.out.println("In Java8, Lambda expression rocks !!")
+        () -> out.println("In Java8, Lambda expression rocks !!")
     ).start();
 
     // Read more:http:
@@ -160,17 +175,17 @@ public class JavaLang extends InvokableBase {
     //Prior Java 8 :
     List features0 = Arrays.asList("Lambdas", "Default Method", "Stream API", "Date and Time API");
     for (Object feature : features0) {
-      System.out.println((String) feature);
+      out.println((String) feature);
     }
 
 //In Java 8:
     List features1 = Arrays.asList("Lambdas", "Default Method", "Stream API", "Date and Time API");
-    features1.forEach(n -> System.out.println(n));
+    features1.forEach(n -> out.println(n));
 
 // Even better use Method reference feature of Java 8
 // method reference is denoted by :: (double colon) operator
 // looks similar to score resolution operator of C++
-    features1.forEach(System.out::println);
+    features1.forEach(out::println);
 
   }
 
@@ -189,13 +204,13 @@ public class JavaLang extends InvokableBase {
     Stream<Foo> stream = fooList.stream();
     //Stream<Person> parallelStream = persons.parallelStream();
     Stream<Foo> filterSterm = stream.filter(p -> p.value > 1);
-    filterSterm.forEach(p -> System.out.println(p.name));
+    filterSterm.forEach(p -> out.println(p.name));
 
     //Typical filter , map, forEach do action
 
     fooList.stream().filter(p -> p.value == 2)
         .map(p -> new Bar(p.value * p.value))
-        .forEach(bar -> System.out.println("bar is" + bar.bar));
+        .forEach(bar -> out.println("bar is" + bar.bar));
     fooList.stream().filter(p -> p.value == 2)
         .map(p -> new Bar(p.value * p.value))
         .reduce(new Bar(0), (a, b)->new Bar(a.bar + b.bar));
