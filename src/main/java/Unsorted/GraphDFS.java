@@ -1,6 +1,7 @@
 package Unsorted;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,11 +22,22 @@ public class GraphDFS extends InvokableBase {
   // Add this class to Common/Main.java
   @Override
   public Priority getRunPriority() {
-    return new Priority(160204, 0, Category.LeetCode);
+    return new Priority(220831, 1, Category.LeetCode);
   }
 
   @Override
   public void run() {
+    HashSet<Pos> set = new HashSet<Pos>();
+    set.add(new Pos(0,0));
+    set.add(new Pos(0,0));
+    set.add(new Pos(1,0));
+    set.add(new Pos(1,1));
+    set.add(new Pos(2,2));
+    assert(set.contains(new Pos(0, 0)));
+    Pos pos = new Pos(2, 0);
+    Boolean b = set.contains(pos);
+    assert(!b);
+
     //Call your test in Common/Main.java
     Util.assertEq(9, findStep(new int[10][10], new Pos(0, 0), new Pos(9, 9)));
     Util.assertEq(5, findStep(new int[10][10], new Pos(5, 0), new Pos(0, 5)));
@@ -60,33 +72,23 @@ public class GraphDFS extends InvokableBase {
     }
 
     public boolean equals(Object obj) {
-      String s = "ss";
-      s.substring(0,6);
-
-      boolean[] xch = new boolean[256];
-
-      for(char ch : s.toCharArray()) {
-        int i = ch;
-        int j = 'c';
-        xch[ch] = true;
-      }
-      List<Integer> list = new ArrayList<>();
-      list.iterator();
-
       return obj != null && obj instanceof Pos && ((Pos) obj).x == this.x && (((Pos) obj).y == this.y);
       }
 
-    public int hashCode(){
-
-      int[][] data = new int[][]{{1,2,3},{3,4,5, 6}};
-     //  return x <<16 & y;
-      return 0;
+    public int getX() {
+      return x;
     }
+
+//    @Override
+//    public int hashCode(){
+//      return 0;
+//    }
   }
 
   // when use hash based on object, you can not create a new object temp.
   //
   int findStep(int[][] b, Pos start, Pos end) {
+
 
     int[][] depth = new int[b.length][b[0].length];
     for(int i=0;i<b.length;i++) for(int j=0;j<b[0].length;j++)depth[i][j]=-1;

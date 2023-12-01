@@ -45,4 +45,17 @@ public class SwapNodesinPairs_ex extends InvokableBase {
       return tmp;
     }
   }
+
+  public ListNode swapPairs1(ListNode head) {
+    ListNode h = new ListNode(-1, head);
+    ListNode cur = h;
+    while (cur.next != null && cur.next.next != null){
+      ListNode s = cur.next;
+      cur.next = s.next;
+      s.next = s.next.next;
+      cur.next.next = s;
+      cur = cur.next.next;
+    }
+    return h.next;
+  }
 }

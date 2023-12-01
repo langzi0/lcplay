@@ -68,6 +68,6 @@ public class ReflectionSample extends InvokableBase {
 
     @Override
     public void run() {
-        ReflectionSample.main(null);
+        main(null);
     }
 }

@@ -45,7 +45,7 @@ public class MergeIntervals_xbian_sort_adding_toCurrex extends InvokableBase {
 
   @Override
   public Priority getRunPriority() {
-    return new Priority(/*yymdd*/151120, 0, Category.LeetCode);
+    return new Priority(/*yymmdd*/231120, 0, Category.LeetCode);
   }
 
   @Override
@@ -73,25 +73,29 @@ public class MergeIntervals_xbian_sort_adding_toCurrex extends InvokableBase {
 
   public List<Interval> merge(List<Interval> intervals) {
     Collections.sort(intervals, (Interval a, Interval b)-> a.start - b.start);
-    Collections.binarySearch(intervals, new Interval(1,1), (Interval a, Interval b)-> a.start - b.start);
+    // Collections.binarySearch(intervals, new Interval(1,1), (Interval a, Interval b)-> a.start - b.start);
     int i = 0;
     ArrayList<Interval> listRet = new ArrayList<>();
     // pick out the first element,  keep on merge the new element into the current
+    Interval last = intervals.get(i++);
+    listRet.add(last);
+
     while(i < intervals.size())
     {
-      Interval cur = intervals.get(i);
-
-      i++;
-      while(i< intervals.size() && cur.end >= intervals.get(i).start)
+      Interval cur = intervals.get(i++);
+      if (cur.start > last.end) {
+        last = cur;
+        listRet.add(last);
+      } else
       {
-        cur.end = Math.max(cur.end, intervals.get(i).end );
-        i++;
+        last.end = Math.max(last.end, cur.end);
       }
-      listRet.add(cur);
     }
 
     return listRet;
   }
+
+
 
 
 }

@@ -5,10 +5,12 @@ import Common.InvokableBase;
 import Common.Priority;
 import Common.Util;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.spark.sql.catalyst.expressions.In;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * Created by @author  @since 8/10/15.
@@ -16,14 +18,18 @@ import java.util.stream.IntStream;
 
 public class JavaCollectionEx extends InvokableBase {
 
+  public JavaCollectionEx() {
+    super();
+
+  }
   @Override
   public Priority getRunPriority() {
-    return new Priority(151104, 01, Category.notClassified);
+    return new Priority(220831/*151104*/, 01, Category.notClassified);
   }
 
   public void run() {
     //new, add element, iterate, remove, check
-
+    super.run();
     array_list_init();
     list_ops();
     queue_ops();
@@ -40,6 +46,7 @@ public class JavaCollectionEx extends InvokableBase {
 
     Integer max = Collections.max(Arrays.asList(values));
     Util.show(max);
+
   }
 
   // if you have control on your own class use Comparable interface like here
@@ -169,6 +176,17 @@ use rangeClosed for this kind of situation.
     map1.entrySet()
         .forEach(
             p -> p.getValue().forEach(i -> nodeList.get(p.getKey()).nbrs.add(nodeList.get(i))));
+    LinkedList<Integer> intList = new LinkedList<>();
+    IntStream.range(0,10).forEach(i-> intList.add(i));
+
+    Iterator<Integer> iter = intList.iterator();
+    while (iter.hasNext()){
+      var entry = iter.next();
+      if (entry == 3){
+        // it will remove
+        iter.remove();
+      }
+    }
 
     return nodeList.get(0);
   }
