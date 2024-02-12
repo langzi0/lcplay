@@ -3,6 +3,7 @@ package CodePad;
 import Common.Category;
 import Common.InvokableBase;
 import Common.Priority;
+import Common.Util;
 
 /**
  * @author
@@ -10,18 +11,17 @@ import Common.Priority;
  * This is the template for adding any new class
  */
 
-public class _NewClassTemplate1 extends InvokableBase {
+public class CommonePrefix extends InvokableBase {
   // Add this class to Common/Main.java
   @Override
   public Priority getRunPriority() {
-    return new Priority(240201, 2, Category.LeetCode);
+    return new Priority(240130, 0, Category.LeetCode);
   }
 
   @Override
   public void run() {
-    //Call your test in Common/Main.java
     eq("", 1, 1);
-
   }
+
 
 }

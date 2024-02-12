@@ -1,5 +1,7 @@
 package Question;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import Common.Category;
@@ -59,4 +61,25 @@ public class PrintNumbers extends InvokableBase {
     new PrintNumbers().printNumber();
   }
 
+  public List<String> fizzBuzz(int n) {
+    List<String> ret = new ArrayList<>();
+    for (int i = 1; i <= n; i++) {
+      ret.add(frizzbuzz(i));
+    }
+    return ret;
+
+  }
+
+  String frizzbuzz(int n) {
+    if (n % 15 == 0) {
+      return "FizzBuzz";
+    } else if (n % 3 == 0) {
+      return "Fizz";
+    } else if (n % 5 == 0) {
+      return "Buzz";
+    } else {
+      return new Integer(n).toString();
+    }
+
+  }
 }

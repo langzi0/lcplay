@@ -5,20 +5,18 @@ import Common.InvokableBase;
 import Common.Priority;
 import Common.Util;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.spark.sql.catalyst.expressions.In;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Created by @author  @since 8/10/15.
  */
 
-public class JavaCollectionEx extends InvokableBase {
+public class JavaCollectionFunctions extends InvokableBase {
 
-  public JavaCollectionEx() {
+  public JavaCollectionFunctions() {
     super();
 
   }

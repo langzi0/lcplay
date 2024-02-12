@@ -33,22 +33,8 @@ public class MergekSortedLists extends InvokableBase {
       return null;
     }
 
-    Comparator<ListNode> comp = new Comparator<ListNode>() {
-      public int compare(ListNode o1, ListNode o2) {
-        if (o1.val < o2.val) {
-          return -1;
-        }
-        if (o1.val > o2.val) {
-          return 1;
-        }
-        return 0;
-      }
-    };
-
-    PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(
-        lists.size(), comp);
-
-
+    PriorityQueue<ListNode> heap = new PriorityQueue<>(
+        lists.size(),(a,b) -> a.val - b.val);
 
     for (ListNode node : lists) {
       if (node != null) {

@@ -7,7 +7,9 @@ import Common.Util;
 import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -18,14 +20,15 @@ import java.util.stream.Stream;
 /**
  * Created by @author  @since 8/10/15.
  */
-public class JavaLang extends InvokableBase {
+public class JavaLangFutureMinLamda extends InvokableBase {
 
     @Override
     public Priority getRunPriority() {
-        return new Priority(220903, 01, Category.notClassified);
+        return new Priority(240207, 01, Category.notClassified);
     }
 
     public void run() {
+        runGroupOfFuture();
 
         run_lamdaAsFunction();
         run_lamdaEventHandling();
@@ -34,7 +37,6 @@ public class JavaLang extends InvokableBase {
         run_futureList();
         run_interface_anonymous_class();
         test_integer_max_min();
-
     }
 
 
@@ -101,6 +103,45 @@ public class JavaLang extends InvokableBase {
         return countOfInc;
     }
 
+    class Result {
+        String status;
+        public Result (String s){
+            status = s;
+        }
+    }
+    // avoid running this at the same time.
+    synchronized
+    private void runGroupOfFuture(){
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        Random random = new Random();
+
+        List<Future<Result>> futures = new ArrayList<>();
+        for(int i=0; i< 100; i++){
+            int finalI = i;
+            futures.add(executor.submit(()-> {
+                int j = random.nextInt(1000);
+                int k = 1000;
+                long date = System.currentTimeMillis();
+                String x = "Thread " + finalI + " after waiting returning " + k;
+                System.out.println(x + "started at " + date );
+
+                Thread.sleep(1000);
+                return new Result("Thread " + finalI + " after waiting returning " + k);
+
+            }));
+        }
+        List<Result> results = new ArrayList<>();
+        for(var s : futures) {
+            try {
+                results.add(s.get());
+            } catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        results.stream().map(p-> p.status).forEach(p-> System.out.println(p));
+
+
+    }
 
     private void run_futureList() {
         ExecutorService executor = Executors.newFixedThreadPool(2);
