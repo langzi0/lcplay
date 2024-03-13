@@ -7,6 +7,8 @@ This is a definitely a draft project to remember my progress in leetcode.  Appre
 
 Intellij instructions.
  import from existing code, change to java 8 etc.
+
+![](src/resources/intellijImport.png)
  
 Debug Common.Main
 

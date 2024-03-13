@@ -22,6 +22,7 @@ public class Main {
   static public void main(String[] args) throws IllegalAccessException, InvocationTargetException, InstantiationException {
     List<String> packages = Arrays.asList("CodePad", "Lang", "Question", "LanguageTip","Unsorted");
     try {
+      System.out.println("runTopPriorityFromPackages...");
       runTopPriorityFromPackages(packages);
     } catch (Throwable th){
       System.out.println("Quit because:" + th.getMessage());
