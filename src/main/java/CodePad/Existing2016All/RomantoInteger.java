@@ -14,11 +14,12 @@ public class RomantoInteger extends InvokableBase {
 
   @Override
   public Priority getRunPriority() {
-    return new Priority(/*yymdd*/160101, 0, Category.LeetCode);
+    return new Priority(/*yymdd*/240201, 0, Category.LeetCode);
   }
 
   @Override
   public void run() {
+    eq("", 11, romanToInt("XI"));
   }
 
   public int romanToInt(String s) {
