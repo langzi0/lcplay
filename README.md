@@ -7,6 +7,7 @@ This is a definitely a draft project to remember my progress in leetcode.  Appre
 
 Intellij instructions.
  import from existing code, change to java 8 etc.
+Using Intellij CE version.  Seems intellij ultimate have issue to import maven
 
 ![](src/resources/intellijImport.png)
  
