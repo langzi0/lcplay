@@ -28,11 +28,17 @@ public class Util {
     // For string, the equals will implement the character wise comparison.
     if (!Objects.equals(expected, actual))
     {
-      System.out.println(ANSI_RED + msg+ "Assert Failed!! Expected:" + expected + " Actual:" + actual.toString() + ANSI_RESET);
+      System.out.println(ANSI_RED + msg+ "Assert Failed!! Expected:" + getNullOrString(expected)
+              + " Actual:" + getNullOrString(actual) + ANSI_RESET);
     }
     else {
-      System.out.println(ANSI_GREEN + msg+ " Work as Expected. Expected:" + expected + " Actual:" + actual.toString()+ ANSI_RESET);
+      System.out.println(ANSI_GREEN + msg+ " Work as Expected. Expected:" + getNullOrString(expected)
+              + " Actual:" + getNullOrString(actual)+ ANSI_RESET);
     }
+  }
+
+  public static String getNullOrString(Object obj){
+    return obj == null? "Null" : obj.toString();
   }
   public static void assertEq(Object expected, Object actual)
   {

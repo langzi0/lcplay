@@ -22,7 +22,7 @@ public class JumpGame_ex extends InvokableBase {
 
   @Override
   public Priority getRunPriority() {
-    return new Priority(/*yymdd*/20240323, 1, Category.LeetCode);
+    return new Priority(/*yymdd */240323, 1, Category.LeetCode);
   }
 
   @Override
@@ -40,6 +40,7 @@ public class JumpGame_ex extends InvokableBase {
     int idx = 0;
     int max = A[idx];
     idx++;
+    //idx can not great than max, and
     while (idx < A.length && max < A.length - 1 && idx <=max) {
       if (A[idx] + idx > max)
         max = A[idx] + idx;

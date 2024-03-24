@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 //
 public abstract class InvokableBase implements Invokeable {
   @Override  public void run(){
-        String s = String.format("InvokableBase: GetClassName: %s  Priority is: %S\n ", this.getClass().getName(), getRunPriority().getDaySeq());
+        String s = String.format("Util.assertEq to assert, InvokableBase: GetClassName: %s  Priority is: %S\n ", this.getClass().getName(), getRunPriority().getDaySeq());
         System.out.println(s);
       }
   @Override  public Priority getRunPriority(){return null;}
