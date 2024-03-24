@@ -22,26 +22,30 @@ public class JumpGame_ex extends InvokableBase {
 
   @Override
   public Priority getRunPriority() {
-    return new Priority(/*yymdd*/151120, 2, Category.LeetCode);
+    return new Priority(/*yymdd*/20240323, 1, Category.LeetCode);
   }
 
   @Override
   public void run() {
     Util.assertEq("can jum", true, canJump(new int[]{2, 3, 1, 1, 4}));
     Util.assertEq("can jum", false, canJump(new int[]{3, 2, 1, 0, 4}));
-    Util.assertEq("can jum", false, canJump(new int[]{0, 2, 1, 0, 4}));
+    Util.assertEq("can jum", true, canJump(new int[]{2,3,1,1,4}));
+    Util.assertEq("can jum", true, canJump(new int[]{1,2,3}));
+
+
   }
 
   public boolean canJump(int[] A) {
 // from first, each step you can cover to max index;
-    int i = 0;
-    int max = 0;
-    while (i < A.length && i <= max) {
-      if (A[i] + i > max) {
-        max = A[i] + i;
-      }
-      i++;
+    int idx = 0;
+    int max = A[idx];
+    idx++;
+    while (idx < A.length && max < A.length - 1 && idx <=max) {
+      if (A[idx] + idx > max)
+        max = A[idx] + idx;
+      idx++;
+
     }
-    return (max >= A.length - 1);
+    return max >= A.length - 1;
   }
 }
