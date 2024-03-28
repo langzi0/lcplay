@@ -22,6 +22,9 @@ public class ImplementStrStr_ex extends InvokableBase {
   @Override
   public void run() {
     Util.assertEq(null, strStr("hello", "no"));
+    Util.assertEq(3, strStr("hello", "lo"));
+    Util.assertEq(0, strStr("hello", "he"));
+    Util.assertEq(null, strStr("hello", "no"));
   }
 
   public Integer strStr(String haystack, String needle) {

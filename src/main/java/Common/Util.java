@@ -22,18 +22,23 @@ public class Util {
     }
     Suit.valueOf("SPADE");
   }
-
+  public static void showRed(String msg){
+    System.out.println(ANSI_RED + msg + ANSI_RESET);
+  }
+  public static void showGreen(String msg){
+    System.out.println(ANSI_GREEN + msg + ANSI_RESET);
+  }
   public static void assertEq(String msg, Object expected, Object actual)
   {
     // For string, the equals will implement the character wise comparison.
     if (!Objects.equals(expected, actual))
     {
-      System.out.println(ANSI_RED + msg+ "Assert Failed!! Expected:" + getNullOrString(expected)
-              + " Actual:" + getNullOrString(actual) + ANSI_RESET);
+      showRed(msg+ "Assert Failed!! Expected:" + getNullOrString(expected)
+              + " Actual:" + getNullOrString(actual));
     }
     else {
-      System.out.println(ANSI_GREEN + msg+ " Work as Expected. Expected:" + getNullOrString(expected)
-              + " Actual:" + getNullOrString(actual)+ ANSI_RESET);
+      showGreen(msg+ " Work as Expected. Expected:" + getNullOrString(expected)
+              + " Actual:" + getNullOrString(actual));
     }
   }
 
