@@ -1,11 +1,11 @@
 package CodePad.Existing2016All;
 
-import java.util.ArrayList;
-
 import Common.Category;
 import Common.InvokableBase;
 import Common.Priority;
 import Common.Util;
+
+import java.util.ArrayList;
 
 /**
  * Given n pairs of parentheses, write a function to generate all combinations of well-formed
@@ -14,6 +14,8 @@ import Common.Util;
  * For example, given n = 3, a solution set is:
  * <p>
  * "((()))", "(()())", "(())()", "()(())", "()()()"
+
+ *
  */
 
 public class GenerateParentheses_ex extends InvokableBase {
